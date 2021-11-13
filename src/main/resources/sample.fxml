@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleNode?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="parent-pane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="800.0">
+         <children>
+            <ScrollPane layoutX="59.0" layoutY="198.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+               <content>
+                  <AnchorPane fx:id="backgroundAnchorPane">
+                     <children>
+                        <ImageView fx:id="imageView" fitHeight="300.0" fitWidth="400.0" onKeyPressed="#onKeyPressedHandler" onMouseDragged="#onMouseDraggedHandler" onMouseExited="#onMouseExitedHandler" onMousePressed="#onMousePressedHandler" onMouseReleased="#onMouseReleasedHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <HBox maxHeight="100.0" minHeight="100.0" prefHeight="100.0" styleClass="toolbar" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER" hgap="5.0" maxHeight="100.0" minWidth="100.0" prefHeight="100.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton fx:id="createBlankButton" alignment="CENTER" contentDisplay="TOP" onAction="#onNewHandler" prefHeight="60.0" prefWidth="65.0" text="New" GridPane.rowSpan="2">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="FILE_OUTLINE" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="openButton" alignment="CENTER" layoutX="10.0" layoutY="15.0" onAction="#onOpenHandler" prefHeight="30.0" prefWidth="70.0" text="Open" GridPane.columnIndex="1">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" style="-glyph-size: 15;" />
+                     </graphic>
+                  </JFXButton>
+                  <Label text="File" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="saveButton" alignment="CENTER" layoutX="66.0" layoutY="27.0" onAction="#onSaveHandler" prefHeight="30.0" prefWidth="70.0" ripplerFill="RED" style="-jfx-disable-visual-focus: true;" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="CONTENT_SAVE" />
+                     </graphic>
+                  </JFXButton>
+                  <HBox alignment="CENTER" GridPane.columnIndex="3">
+                     <children>
+                        <JFXToggleNode fx:id="penToggle">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PENCIL" size="15" />
+                           </graphic>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toolsToggleGroup" />
+                           </toggleGroup>
+                           <tooltip>
+                              <Tooltip text="Pen" />
+                           </tooltip>
+                        </JFXToggleNode>
+                        <JFXToggleNode fx:id="brushToggle" toggleGroup="$toolsToggleGroup">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="BRUSH" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Brush" />
+                           </tooltip>
+                        </JFXToggleNode>
+                        <JFXToggleNode fx:id="eyeDropperToggle" toggleGroup="$toolsToggleGroup">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="EYEDROPPER" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Color Picker" />
+                           </tooltip>
+                        </JFXToggleNode>
+                        <JFXToggleNode fx:id="eraserToggle" toggleGroup="$toolsToggleGroup">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ERASER" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Eraser" />
+                           </tooltip>
+                        </JFXToggleNode>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <children>
+                        <JFXToggleNode fx:id="colorFillToggle" toggleGroup="$toolsToggleGroup">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="FORMAT_COLOR_FILL" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Color Fill" />
+                           </tooltip>
+                        </JFXToggleNode>
+                        <JFXToggleNode fx:id="textToggle" layoutX="82.0" layoutY="13.0" toggleGroup="$toolsToggleGroup">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="FORMAT_TEXT" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Crop" />
+                           </tooltip>
+                        </JFXToggleNode>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#onCombineHandler">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="VECTOR_COMBINE" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Image Combine" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <Label layoutX="66.0" layoutY="81.0" text="Tools" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <HBox alignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <children>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#onRotateLeftHandler">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ROTATE_LEFT" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Rotate Left 90 Degree" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#onRotateRightHandler">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="ROTATE_RIGHT" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Rotate Right 90 Degree" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <children>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#onApplyEffectHandler">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MAGIC" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Apply Effect" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXComboBox fx:id="effectsComboBox" promptText="Effects" />
+                     </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="2.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                     <children>
+                        <JFXSlider fx:id="strokeSizeSlider" blockIncrement="1.0" indicatorPosition="RIGHT" majorTickUnit="2.0" max="17.0" min="1.0" minorTickCount="1" prefHeight="15.0" prefWidth="120.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                        <Label alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" text="px">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="BORDER_STYLE" size="15" textAlignment="CENTER" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <JFXButton alignment="CENTER" onAction="#onRedoHandler" text="Redo" GridPane.columnIndex="2">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="REDO" size="20" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" onAction="#onUndoHandler" text="Undo" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <graphic>
+                        <MaterialDesignIconView glyphName="UNDO" size="20" />
+                     </graphic>
+                  </JFXButton>
+                  <HBox alignment="CENTER" GridPane.columnIndex="4">
+                     <children>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" onAction="#onScaleHandler">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="MAGNIFY_PLUS" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Scaling 200%" />
+                           </tooltip>
+                        </JFXButton>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="26.0" layoutY="12.0" onAction="#onShrinkHandler">
+                           <graphic>
+                              <MaterialDesignIconView glyphName="MAGNIFY_MINUS" size="20" />
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="Shrinking 50%" />
+                           </tooltip>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <JFXColorPicker fx:id="colorPicker" GridPane.columnIndex="5" />
+                  <Label layoutX="270.0" layoutY="81.0" text="Image" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" />
+         </effect>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox fx:id="statusBar" alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="800.0" spacing="2.0" styleClass="statusBar" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
+         </padding>
+         <children>
+            <Label fx:id="statusLabel" graphicTextGap="5.0" />
+            <Hyperlink fx:id="statusLink" graphicTextGap="5.0" />
+         </children></HBox>
+   </bottom>
+</BorderPane>
